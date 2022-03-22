@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "156843910961",
+    "project_id": "socialmediagamer-8f4ff",
+    "storage_bucket": "socialmediagamer-8f4ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156843910961:android:a14cd090d860c64b347210",
+        "android_client_info": {
+          "package_name": "com.socialmediagamer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "156843910961-it8nopf01gn0rembtolcosvk1sqmq2cm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-u1tmOSXUu571a13JZuQeWWd_DgncCHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "156843910961-it8nopf01gn0rembtolcosvk1sqmq2cm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
