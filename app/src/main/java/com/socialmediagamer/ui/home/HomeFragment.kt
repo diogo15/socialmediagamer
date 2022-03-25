@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.socialmediagamer.R
 import com.socialmediagamer.adapter.PublicacionesAdapter
 import com.socialmediagamer.databinding.FragmentHomeBinding
 
@@ -25,9 +27,9 @@ class HomeFragment : Fragment() {
         publicacionViewModel = ViewModelProvider(this)[PublicacionViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        /*binding.btnAddEstado.setOnClickListener {
-            findNavController().navigate(R.id.addEstadoFragment)
-        }*/
+        binding.btnAddPost.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_nueva_publicacion)
+        }
 
         //levantar el reciclador desde la clase adapter
         val publicacionesAdapter= PublicacionesAdapter()

@@ -8,8 +8,12 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.socialmediagamer.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:label="Inicio"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_nueva_publicacion"
+            app:destination="@id/nueva_publicacion" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +26,13 @@
         android:name="com.socialmediagamer.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/nueva_publicacion"
+        android:name="com.socialmediagamer.nueva_publicacion"
+        android:label="Crear Publicacion"
+        tools:layout="@layout/fragment_nueva_publicacion" >
+        <action
+            android:id="@+id/action_nueva_publicacion_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>
