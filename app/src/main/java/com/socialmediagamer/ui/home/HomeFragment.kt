@@ -5,38 +5,48 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.socialmediagamer.adapter.PublicacionesAdapter
 import com.socialmediagamer.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
+    private lateinit var publicacionViewModel: PublicacionViewModel
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
 
+        publicacionViewModel = ViewModelProvider(this)[PublicacionViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        /*binding.btnAddEstado.setOnClickListener {
+            findNavController().navigate(R.id.addEstadoFragment)
+        }*/
+
+        //levantar el reciclador desde la clase adapter
+        val publicacionesAdapter= PublicacionesAdapter()
+        val reciclador = binding.latestPosts
+
+        reciclador.adapter = publicacionesAdapter
+        reciclador.layoutManager = LinearLayoutManager(requireContext())
+        publicacionViewModel = ViewModelProvider(this)[PublicacionViewModel::class.java]
+
+        publicacionViewModel.getAllData.observe(viewLifecycleOwner){ publicaciones ->
+            publicacionesAdapter.setData(publicaciones)
         }
-        return root
+
+        return binding.root;
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
         _binding = null
     }
+
 }
