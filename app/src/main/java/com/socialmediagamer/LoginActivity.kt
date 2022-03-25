@@ -43,10 +43,6 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
-        //bypass login
-        //val intent = Intent(this, MainActivity::class.java)
-        //startActivity(intent)
-
     }
 
     private fun haceRegister(){
@@ -60,8 +56,11 @@ class LoginActivity : AppCompatActivity() {
                     val user = auth.currentUser
                     actualiza(user)
                 }
+            }.addOnFailureListener(this){task->
+                Log.d("Auth", task.message.toString())
+                Log.d("Auth", "Falllloooo")
             }
-        Log.d("Auth", "Usuario fallido")
+
     }
 
     private fun actualiza(user: FirebaseUser? ){
