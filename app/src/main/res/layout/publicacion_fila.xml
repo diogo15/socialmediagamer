@@ -16,25 +16,29 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
 
         <TextView
             android:id="@+id/txt_post_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TITULO"
+            android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="16dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txt_post_desc"
-            android:layout_width="361dp"
-            android:layout_height="103dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="385dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
             android:text="Descripcion"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_post_title" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -4,14 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.socialmediagamer.R
 import com.socialmediagamer.adapter.PublicacionesAdapter
 import com.socialmediagamer.databinding.FragmentHomeBinding
+
 
 class HomeFragment : Fragment() {
 
@@ -42,6 +43,9 @@ class HomeFragment : Fragment() {
         publicacionViewModel.getAllData.observe(viewLifecycleOwner){ publicaciones ->
             publicacionesAdapter.setData(publicaciones)
         }
+
+        //add Divider
+        reciclador.addItemDecoration( DividerItemDecoration( context, DividerItemDecoration.VERTICAL ) )
 
         return binding.root;
     }
