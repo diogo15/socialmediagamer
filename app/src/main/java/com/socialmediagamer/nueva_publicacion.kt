@@ -18,6 +18,7 @@ class nueva_publicacion : Fragment() {
     private lateinit var publicacionViewModel: PublicacionViewModel
     private var _binding: FragmentNuevaPublicacionBinding? = null
     private val binding get() = _binding!!
+    private var categoria = "Nintendo"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +31,18 @@ class nueva_publicacion : Fragment() {
         binding.btnNewPublicacion.setOnClickListener{
             insertarPublicacion()
         }
+        binding.btNintendo.setOnClickListener{
+            categoria = "Nintendo"
+        }
+        binding.btPc.setOnClickListener{
+            categoria = "PC"
+        }
+        binding.btPs4.setOnClickListener{
+            categoria = "PS4"
+        }
+        binding.btXbox.setOnClickListener{
+            categoria = "Xbox"
+        }
 
         return binding.root;
     }
@@ -39,7 +52,7 @@ class nueva_publicacion : Fragment() {
         val desc = binding.txtEditDesc.text.toString()
         val url = binding.txtEditImg.text.toString()
 
-        val publicacion = Publicacion("", titulo, desc, url)
+        val publicacion = Publicacion("", titulo, desc, url, categoria)
         publicacionViewModel.addPublicacion(publicacion)
 
         Toast.makeText(requireContext(),"Guardado!", Toast.LENGTH_SHORT).show()
