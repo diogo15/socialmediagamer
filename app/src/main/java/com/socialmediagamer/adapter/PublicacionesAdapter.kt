@@ -1,8 +1,9 @@
 package com.socialmediagamer.adapter
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.socialmediagamer.R
 import com.socialmediagamer.databinding.PublicacionFilaBinding
@@ -14,25 +15,28 @@ class PublicacionesAdapter: RecyclerView.Adapter<PublicacionesAdapter.Publicacio
 
     inner class PublicacionesViewHolder(private val itemBinding:PublicacionFilaBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
+
         fun bind(publicacion: Publicacion){
             itemBinding.txtPostTitle.text = publicacion.titulo
             itemBinding.txtPostDesc.text = publicacion.descripcion
+
             if(publicacion.categoria=="Nintendo"){
                 itemBinding.imageButton2.setImageResource(R.drawable.ic_nintendo)
-                itemBinding.imageButton2.setBackgroundColor("#A81414")
+                itemBinding.imageButton2.backgroundTintList = ColorStateList.valueOf(Color.RED)
             }
             if(publicacion.categoria=="PC"){
-                itemBinding.imageButton2.setImageResource(R.drawable.icon_nintendo)
-                itemBinding.imageButton2.setBackgroundColor("#CCCCCC")
+                itemBinding.imageButton2.setImageResource(R.drawable.ic_ps4)
+                itemBinding.imageButton2.backgroundTintList = ColorStateList.valueOf(Color.GRAY)
             }
             if(publicacion.categoria=="PS4"){
                 itemBinding.imageButton2.setImageResource(R.drawable.ic_ps4)
-                itemBinding.imageButton2.setBackgroundColor("#000080")
+                itemBinding.imageButton2.backgroundTintList = ColorStateList.valueOf(Color.BLUE)
             }
             if(publicacion.categoria=="Xbox"){
-                itemBinding.imageButton2.setImageResource(R.drawable.ic_nintendo)
-                itemBinding.imageButton2.setBackgroundColor("#008000")
+                itemBinding.imageButton2.setImageResource(R.drawable.ic_ps4)
+                itemBinding.imageButton2.backgroundTintList = ColorStateList.valueOf(Color.GREEN)
             }
+
             /*
             itemBinding.vistaFila.setOnClickListener{
                 val action = PublicacionesViewHolder.actionPublicacionFragmentToUpdatePublicacionFragment(publicacion)
