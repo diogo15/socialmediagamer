@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_navigation_home_to_nueva_publicacion"
-            app:destination="@id/nueva_publicacion" />
+            app:destination="@id/navigation_nueva_publicacion" />
     </fragment>
 
     <fragment
@@ -26,8 +26,9 @@
         android:name="com.socialmediagamer.ui.notifications.NotificationsFragment"
         android:label="XXXXXX"
         tools:layout="@layout/fragment_notifications" />
+
     <fragment
-        android:id="@+id/nueva_publicacion"
+        android:id="@+id/navigation_nueva_publicacion"
         android:name="com.socialmediagamer.nueva_publicacion"
         android:label="Crear Publicacion"
         tools:layout="@layout/fragment_nueva_publicacion" >

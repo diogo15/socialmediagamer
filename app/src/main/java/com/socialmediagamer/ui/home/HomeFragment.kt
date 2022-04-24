@@ -29,7 +29,9 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         binding.btnAddPost.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_home_to_nueva_publicacion)
+            //findNavController().navigate(R.id.action_navigation_home_to_nueva_publicacion)
+            val action = R.id.navigation_nueva_publicacion
+            this.findNavController().navigate(action)
         }
 
         //levantar el reciclador desde la clase adapter
