@@ -1,5 +1,7 @@
 package com.socialmediagamer
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -32,16 +34,24 @@ class nueva_publicacion : Fragment() {
             insertarPublicacion()
         }
         binding.btNintendo.setOnClickListener{
+            limpiar(binding);
             categoria = "Nintendo"
+            binding.btNintendo.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#b50000"))
         }
         binding.btPc.setOnClickListener{
+            limpiar(binding);
             categoria = "PC"
+            binding.btPc.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#3e3e3e"))
         }
         binding.btPs4.setOnClickListener{
+            limpiar(binding);
             categoria = "PS4"
+            binding.btPs4.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#1733ab"))
         }
         binding.btXbox.setOnClickListener{
+            limpiar(binding);
             categoria = "Xbox"
+            binding.btXbox.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#31a22e"))
         }
 
         return binding.root;
@@ -59,6 +69,13 @@ class nueva_publicacion : Fragment() {
 
         findNavController().navigate(R.id.action_nueva_publicacion_to_navigation_home)
 
+    }
+
+    fun limpiar(binding: FragmentNuevaPublicacionBinding){
+        binding.btNintendo.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#AAAAAA"))
+        binding.btPc.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#AAAAAA"))
+        binding.btPs4.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#AAAAAA"))
+        binding.btXbox.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#AAAAAA"))
     }
 
     override fun onDestroy() {

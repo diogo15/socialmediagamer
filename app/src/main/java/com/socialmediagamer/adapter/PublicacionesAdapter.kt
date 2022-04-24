@@ -17,24 +17,25 @@ class PublicacionesAdapter: RecyclerView.Adapter<PublicacionesAdapter.Publicacio
         RecyclerView.ViewHolder(itemBinding.root) {
 
         fun bind(publicacion: Publicacion){
+
             itemBinding.txtPostTitle.text = publicacion.titulo
             itemBinding.txtPostDesc.text = publicacion.descripcion
 
             if(publicacion.categoria=="Nintendo"){
                 itemBinding.imageButton2.setImageResource(R.drawable.ic_nintendo)
-                itemBinding.imageButton2.backgroundTintList = ColorStateList.valueOf(Color.RED)
+                itemBinding.imageButton2.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#b50000"))
             }
             if(publicacion.categoria=="PC"){
-                itemBinding.imageButton2.setImageResource(R.drawable.ic_ps4)
-                itemBinding.imageButton2.backgroundTintList = ColorStateList.valueOf(Color.GRAY)
+                itemBinding.imageButton2.setImageResource(R.drawable.ic_pc)
+                itemBinding.imageButton2.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#3e3e3e"))
             }
             if(publicacion.categoria=="PS4"){
                 itemBinding.imageButton2.setImageResource(R.drawable.ic_ps4)
-                itemBinding.imageButton2.backgroundTintList = ColorStateList.valueOf(Color.BLUE)
+                itemBinding.imageButton2.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#1733ab"))
             }
             if(publicacion.categoria=="Xbox"){
-                itemBinding.imageButton2.setImageResource(R.drawable.ic_ps4)
-                itemBinding.imageButton2.backgroundTintList = ColorStateList.valueOf(Color.GREEN)
+                itemBinding.imageButton2.setImageResource(R.drawable.ic_xbox)
+                itemBinding.imageButton2.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#31a22e"))
             }
 
             /*

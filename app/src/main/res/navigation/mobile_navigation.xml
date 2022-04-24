@@ -18,13 +18,13 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.socialmediagamer.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:label="Perfil"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.socialmediagamer.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="XXXXXX"
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/nueva_publicacion"
