@@ -29,10 +29,7 @@ class PublicacionesDAO {
         val listaPublicaciones = MutableLiveData<List<Publicacion>>()
 
         //llamar a google
-        firestore
-            .collection(coleccion1)
-            .document(codigoUsuario)
-            .collection(coleccion2)
+        firestore.collectionGroup(coleccion2)
             .addSnapshotListener { snapshot, ex ->
                 if (ex != null) {
                     return@addSnapshotListener
@@ -41,10 +38,12 @@ class PublicacionesDAO {
                     val lista = ArrayList<Publicacion>()
                     val publicaciones = snapshot.documents
                     publicaciones.forEach{
+
                         val publicacion = it.toObject(Publicacion::class.java)
                         if (publicacion != null){
                             lista.add(publicacion)
                         }
+
                     }
                     listaPublicaciones.value = lista
                 }
