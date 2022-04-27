@@ -4,22 +4,24 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.socialmediagamer.R
-import com.socialmediagamer.databinding.PublicacionFilaBinding
+import com.socialmediagamer.databinding.PublicacionEditarFilaBinding
 import com.socialmediagamer.model.Publicacion
+import com.socialmediagamer.ui.dashboard.DashboardFragmentDirections
+import com.socialmediagamer.ui.home.HomeFragmentDirections
 
-class PublicacionesAdapter: RecyclerView.Adapter<PublicacionesAdapter.PublicacionesViewHolder>() {
+class PublicacionesPerfilAdapter: RecyclerView.Adapter<PublicacionesPerfilAdapter.PublicacionesViewHolder>() {
 
     private var listaPublicaciones = emptyList<Publicacion>()
 
-    inner class PublicacionesViewHolder(private val itemBinding:PublicacionFilaBinding) :
+    inner class PublicacionesViewHolder(private val itemBinding:PublicacionEditarFilaBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
 
         fun bind(publicacion: Publicacion){
 
             itemBinding.txtPostTitle.text = publicacion.titulo
-            itemBinding.txtPostDesc.text = publicacion.descripcion
 
             if(publicacion.categoria=="Nintendo"){
                 itemBinding.imageButton2.setImageResource(R.drawable.ic_nintendo)
@@ -38,17 +40,16 @@ class PublicacionesAdapter: RecyclerView.Adapter<PublicacionesAdapter.Publicacio
                 itemBinding.imageButton2.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#31a22e"))
             }
 
-/*
-            itemBinding.vistaFila.setOnClickListener{
-                val action = PublicacionesViewHolder.actionPublicacionFragmentToUpdatePublicacionFragment(publicacion)
+            itemBinding.btnEditPost.setOnClickListener{
+                val action = DashboardFragmentDirections.actionNavigationDashboardToEditarPublicacion(publicacion)
                 itemView.findNavController().navigate(action)
-            }*/
+            }
 
 
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PublicacionesViewHolder {
-        val itemBinding = PublicacionFilaBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+        val itemBinding = PublicacionEditarFilaBinding.inflate(LayoutInflater.from(parent.context),parent, false)
         return PublicacionesViewHolder(itemBinding)
     }
 

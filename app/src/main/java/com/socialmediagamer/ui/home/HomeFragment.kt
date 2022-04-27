@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
         reciclador.layoutManager = LinearLayoutManager(requireContext())
         publicacionViewModel = ViewModelProvider(this)[PublicacionViewModel::class.java]
 
-        publicacionViewModel.getAllData.observe(viewLifecycleOwner){ publicaciones ->
+        publicacionViewModel.getMyData.observe(viewLifecycleOwner){ publicaciones ->
             publicacionesAdapter.setData(publicaciones)
         }
 

@@ -13,10 +13,12 @@ import kotlinx.coroutines.launch
 class PublicacionViewModel : ViewModel() {
 
     val getAllData: LiveData<List<Publicacion>>
+    val getMyData: LiveData<List<Publicacion>>
     private val repository: PublicacionesRepository = PublicacionesRepository(PublicacionesDAO())
 
     init{
         getAllData = repository.getAllData
+        getMyData = repository.getMyData
     }
 
     fun addPublicacion(publicacion: Publicacion){

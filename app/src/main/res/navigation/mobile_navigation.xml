@@ -13,13 +13,20 @@
         <action
             android:id="@+id/action_navigation_home_to_nueva_publicacion"
             app:destination="@id/navigation_nueva_publicacion" />
+        <action
+            android:id="@+id/action_navigation_home_to_editar_publicacion"
+            app:destination="@id/navigation_editar_publicacion" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.socialmediagamer.ui.dashboard.DashboardFragment"
         android:label="Perfil"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_editar_publicacion"
+            app:destination="@id/navigation_editar_publicacion" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -35,5 +42,17 @@
         <action
             android:id="@+id/action_nueva_publicacion_to_navigation_home"
             app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_editar_publicacion"
+        android:name="com.socialmediagamer.editar_publicacion"
+        android:label="fragment_editar_publicacion"
+        tools:layout="@layout/fragment_editar_publicacion">
+    <argument
+        android:name="publicacion"
+        app:argType="com.socialmediagamer.model.Publicacion" />
+        <action
+            android:id="@+id/action_navigation_editar_publicacion_to_navigation_dashboard"
+            app:destination="@id/navigation_dashboard" />
     </fragment>
 </navigation>

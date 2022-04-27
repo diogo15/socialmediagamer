@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.socialmediagamer.R
 import com.socialmediagamer.databinding.FragmentNuevaPublicacionBinding
 import com.socialmediagamer.databinding.FragmentEditarPublicacionBinding
@@ -21,7 +22,8 @@ class editar_publicacion : Fragment() {
     private lateinit var publicacionViewModel: PublicacionViewModel
     private var _binding: FragmentNuevaPublicacionBinding? = null
     private val binding get() = _binding!!
-    private var categoria = "Nintendo"
+    private var categoria = ""
+    private val args by navArgs<editar_publicacionArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,8 +33,14 @@ class editar_publicacion : Fragment() {
         publicacionViewModel = ViewModelProvider(this)[PublicacionViewModel::class.java]
         _binding = FragmentNuevaPublicacionBinding.inflate(inflater, container, false)
 
+        binding.txtEditTitle.setText(args.publicacion.titulo)
+        binding.txtEditDesc.setText(args.publicacion.descripcion)
+        categoria = args.publicacion.categoria.toString()
+
+        inicial(binding, categoria)
+
         binding.btnNewPublicacion.setOnClickListener{
-            insertarPublicacion()
+            actualizarPublicacion()
         }
         binding.btNintendo.setOnClickListener{
             limpiar(binding);
@@ -58,17 +66,17 @@ class editar_publicacion : Fragment() {
         return binding.root;
     }
 
-    fun insertarPublicacion(){
+    fun actualizarPublicacion(){
         val titulo = binding.txtEditTitle.text.toString()
         val desc = binding.txtEditDesc.text.toString()
         val url = binding.txtEditImg.text.toString()
 
-        val publicacion = Publicacion("", titulo, desc, url, categoria)
-        publicacionViewModel.addPublicacion(publicacion)
+        val publicacion = Publicacion(args.publicacion.id, titulo, desc, url, categoria)
+        publicacionViewModel.updatePublicacion(publicacion)
 
-        Toast.makeText(requireContext(),"Guardado!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(),"Actualizado!", Toast.LENGTH_SHORT).show()
 
-        findNavController().navigate(R.id.action_nueva_publicacion_to_navigation_home)
+        findNavController().navigate(R.id.action_navigation_editar_publicacion_to_navigation_dashboard)
 
     }
 
@@ -77,6 +85,17 @@ class editar_publicacion : Fragment() {
         binding.btPc.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#AAAAAA"))
         binding.btPs4.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#AAAAAA"))
         binding.btXbox.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#AAAAAA"))
+    }
+
+    fun inicial(binding: FragmentNuevaPublicacionBinding, cat:String){
+        if (cat == "Nintendo")
+        binding.btNintendo.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#b50000"))
+        if (cat == "PC")
+        binding.btPc.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#3e3e3e"))
+        if (cat == "PS4")
+        binding.btPs4.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#1733ab"))
+        if (cat == "Xbox")
+        binding.btXbox.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#31a22e"))
     }
 
     override fun onDestroy() {
