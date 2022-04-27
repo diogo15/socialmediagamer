@@ -38,12 +38,12 @@ class PublicacionesAdapter: RecyclerView.Adapter<PublicacionesAdapter.Publicacio
                 itemBinding.imageButton2.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#31a22e"))
             }
 
-            /*
+
             itemBinding.vistaFila.setOnClickListener{
                 val action = PublicacionesViewHolder.actionPublicacionFragmentToUpdatePublicacionFragment(publicacion)
                 itemView.findNavController().navigate(action)
             }
-            */
+
 
         }
     }
