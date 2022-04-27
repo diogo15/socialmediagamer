@@ -9,18 +9,18 @@
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:layout_margin="0dp"
-        android:background="@color/purple_500"
+        android:background="@color/purple_700"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="155dp"
-        android:layout_height="155dp"
+        android:layout_height="160dp"
         android:layout_marginTop="-75dp"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="250dp"
+        app:cardCornerRadius="80dp"
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,20 +28,17 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="145dp"
-            android:layout_height="145dp"
+            android:layout_height="140dp"
             android:layout_gravity="center"
-            app:cardCornerRadius="250dp"
+            app:cardCornerRadius="70dp"
             app:cardElevation="0dp">
 
             <ImageView
-                android:id="@+id/foto_perfil"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:backgroundTint="@color/purple_700"
-                android:foregroundTint="@color/purple_700"
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_nintendo" />
-
+                android:src="@drawable/ic_launcher_background" />
         </androidx.cardview.widget.CardView>
 
     </androidx.cardview.widget.CardView>
@@ -62,23 +59,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
-        android:text="PUBLICACIONES"
+        android:text="MIS PUBLICACIONES"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_autor_view" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reciclador_propias"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="10px"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintTop_toTopOf="@+id/divider"
-        tools:layout_editor_absoluteX="320dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
