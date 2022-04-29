@@ -46,7 +46,7 @@
     <fragment
         android:id="@+id/navigation_editar_publicacion"
         android:name="com.socialmediagamer.editar_publicacion"
-        android:label="fragment_editar_publicacion"
+        android:label="Editar"
         tools:layout="@layout/fragment_editar_publicacion">
     <argument
         android:name="publicacion"

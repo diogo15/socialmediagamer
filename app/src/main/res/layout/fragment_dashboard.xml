@@ -60,7 +60,7 @@
         app:layout_constraintStart_toEndOf="@+id/cardView"
         app:layout_constraintTop_toTopOf="@+id/cardView"
         app:maxImageSize="22dp" />
-
+<!--
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_upload_imagen"
         android:layout_width="wrap_content"
@@ -78,13 +78,14 @@
         app:layout_constraintStart_toEndOf="@+id/cardView"
         app:layout_constraintTop_toTopOf="@+id/cardView"
         app:maxImageSize="22dp" />
+-->
 
     <TextView
         android:id="@+id/txt_autor_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Nombre"
+        android:layout_marginTop="5dp"
+        android:text="Jugador"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
@@ -103,10 +104,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reciclador_propias"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="0dp"
         android:layout_marginTop="10px"
-        tools:listitem="@layout/publicacion_editar_fila"
+        android:paddingBottom="57dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:listitem="@layout/publicacion_editar_fila" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
