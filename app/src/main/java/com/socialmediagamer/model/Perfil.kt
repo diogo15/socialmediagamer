@@ -9,8 +9,9 @@ data class Perfil(
     val nombre: String?,
     val telefono: String?,
     val instagram: String?,
-    val twitter: String?
+    val twitter: String?,
+    val rutaImagen: String?
 ) : Parcelable {
     constructor():
-            this("","","","","")
+            this("","","","","","")
 }

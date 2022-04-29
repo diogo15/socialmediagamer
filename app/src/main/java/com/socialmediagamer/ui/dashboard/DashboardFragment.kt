@@ -4,14 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.socialmediagamer.adapter.PublicacionesAdapter
-import com.socialmediagamer.databinding.FragmentDashboardBinding
+import com.bumptech.glide.Glide
 import com.socialmediagamer.adapter.PublicacionesPerfilAdapter
+import com.socialmediagamer.databinding.FragmentDashboardBinding
 import com.socialmediagamer.ui.home.PublicacionViewModel
 
 class DashboardFragment : Fragment() {
@@ -31,6 +30,11 @@ class DashboardFragment : Fragment() {
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        //load image
+        Glide.with(root.context)
+            .load("https://ps.w.org/metronet-profile-picture/assets/icon-256x256.png?rev=2464419")
+            .into(binding.imageView);
 
         //levantar el reciclador desde la clase adapter
         val publicacionesAdapter= PublicacionesPerfilAdapter()
