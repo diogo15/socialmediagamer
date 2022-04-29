@@ -37,6 +37,7 @@ class DashboardFragment : Fragment() {
     private lateinit var perfilViewModel: PerfilViewModel
 
     private lateinit var imagenUtiles: ImagenUtiles
+    private lateinit var profileID: String
     private lateinit var tomarFotoActivity: ActivityResultLauncher<Intent>
 
     // This property is only valid between onCreateView and
@@ -52,13 +53,20 @@ class DashboardFragment : Fragment() {
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        var rutaImagen2 = ""
 
         perfilViewModel = ViewModelProvider(this)[PerfilViewModel::class.java]
 
-        //load image
-        Glide.with(root.context)
-            .load("https://ps.w.org/metronet-profile-picture/assets/icon-256x256.png?rev=2464419")
-            .into(binding.imageView);
+        perfilViewModel.getAllData.observe(viewLifecycleOwner){ perfiles ->
+            profileID = perfiles?.get(0)?.id.toString()
+            rutaImagen2 = perfiles?.get(0)?.rutaImagen.toString()
+            if(rutaImagen2 != ""){
+                //load image
+                Glide.with(root.context)
+                    .load(rutaImagen2)
+                    .into(binding.imageView);
+            }
+        }
 
         //levantar el reciclador desde la clase adapter
         val publicacionesAdapter= PublicacionesPerfilAdapter()
@@ -79,6 +87,7 @@ class DashboardFragment : Fragment() {
             ActivityResultContracts.StartActivityForResult()){ result->
             if(result.resultCode == Activity.RESULT_OK){
                 imagenUtiles.actualizaFoto()
+                subeImagenNube()
             }
         }
 
@@ -89,9 +98,6 @@ class DashboardFragment : Fragment() {
             tomarFotoActivity
         )
 
-        binding.btnUploadImagen.setOnClickListener {
-            subeImagenNube()
-        }
 
 
         return root
@@ -102,7 +108,7 @@ class DashboardFragment : Fragment() {
         val imagenFile = imagenUtiles.imagenFile
         if (imagenFile.exists() && imagenFile.isFile && imagenFile.canRead()) {
             val ruta = Uri.fromFile(imagenFile)
-            val rutaNube = "gamerAPP/${Firebase.auth.currentUser?.email}/imagenes/${imagenFile.name}"
+            val rutaNube = "gamerAPP/${imagenFile.name}"
             val referencia: StorageReference = Firebase.storage.reference.child(rutaNube)
             referencia.putFile(ruta)
                 .addOnSuccessListener {
@@ -112,28 +118,21 @@ class DashboardFragment : Fragment() {
                             insertarPerfil(rutaImagen)
                         }
                 }
-                .addOnFailureListener{insertarPerfil(rutaImagen)}
+                .addOnFailureListener{
+                    //insertarPerfil(rutaImagen)
+                }
 
         } else {
-            insertarPerfil(rutaImagen)
+            //insertarPerfil(rutaImagen)
         }
     }
 
     fun insertarPerfil(rutaImagen:String){
 
-        var id = ""
-
-        perfilViewModel.getAllData.run {
-            id = this.value?.get(0)?.id.toString()
-        }
-
-        val perfil = Perfil(id, "", "", "","",rutaImagen)
+        val perfil = Perfil(profileID, "", "", "","",rutaImagen)
         perfilViewModel.updatePerfil(perfil)
 
         Toast.makeText(requireContext(),"Imagen Agregada", Toast.LENGTH_SHORT).show()
-
-        val action = R.id.navigation_dashboard
-        this.findNavController().navigate(action)
 
     }
 
