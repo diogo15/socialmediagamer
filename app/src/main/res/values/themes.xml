@@ -16,6 +16,10 @@
 
     </style>
 
+    <style name="floatingbutton">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
 
 
 </resources>

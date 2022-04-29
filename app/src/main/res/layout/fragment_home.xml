@@ -20,11 +20,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/latest_posts"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:layout_editor_absoluteX="1dp" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp"
+        tools:listitem="@layout/publicacion_fila" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_add_post"
@@ -33,9 +36,11 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="104dp"
         android:clickable="true"
-        android:src="@drawable/ic_add"
-        android:tint="#FFFFFF"
-        app:backgroundTint="#C70000"
+        app:fabSize="mini"
+        android:src="@drawable/ic_addmore"
+        android:backgroundTint="@color/purple_700"
+        app:backgroundTint="@color/white"
+        app:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:rippleColor="#FFFFFF" />
