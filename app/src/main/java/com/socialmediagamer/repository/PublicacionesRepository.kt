@@ -18,6 +18,6 @@ class PublicacionesRepository(private val publicacionesDao: PublicacionesDAO) {
     }
 
     suspend fun deletePublicacion(publicacion: Publicacion) {
-        publicacionesDao.savePublicacion(publicacion)
+        publicacionesDao.deletePublicacion(publicacion)
     }
 }
