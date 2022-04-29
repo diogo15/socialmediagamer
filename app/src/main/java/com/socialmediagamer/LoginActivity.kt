@@ -4,17 +4,21 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.auth.ktx.auth
 import com.socialmediagamer.databinding.ActivityLoginBinding
+import com.socialmediagamer.model.Perfil
+import com.socialmediagamer.ui.dashboard.PerfilViewModel
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var perfilViewModel: PerfilViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +32,8 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener { hacelogin() }
         binding.btnRegister.setOnClickListener { haceRegister() }
+
+        perfilViewModel = ViewModelProvider(this)[PerfilViewModel::class.java]
     }
 
     fun hacelogin(){
@@ -54,6 +60,8 @@ class LoginActivity : AppCompatActivity() {
                 if(task.isSuccessful){
                     Log.d("Auth", "Usuario creado")
                     val user = auth.currentUser
+                    val perfil = Perfil("", "", "", "", "","")
+                    perfilViewModel.addPerfil(perfil)
                     actualiza(user)
                 }
             }.addOnFailureListener(this){task->

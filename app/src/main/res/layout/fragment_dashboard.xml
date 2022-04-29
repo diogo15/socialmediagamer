@@ -61,6 +61,24 @@
         app:layout_constraintTop_toTopOf="@+id/cardView"
         app:maxImageSize="22dp" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_upload_imagen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="99dp"
+        android:clickable="true"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/ic_check"
+        android:textAlignment="center"
+        android:backgroundTint="@color/design_default_color_secondary_variant"
+        app:backgroundTint="@color/white"
+        app:tint="@color/white"
+        app:fabCustomSize="32dp"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/cardView"
+        app:maxImageSize="22dp" />
+
     <TextView
         android:id="@+id/txt_autor_view"
         android:layout_width="wrap_content"
