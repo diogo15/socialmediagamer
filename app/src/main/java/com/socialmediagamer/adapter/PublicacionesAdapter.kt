@@ -20,6 +20,7 @@ class PublicacionesAdapter: RecyclerView.Adapter<PublicacionesAdapter.Publicacio
 
             itemBinding.txtPostTitle.text = publicacion.titulo
             itemBinding.txtPostDesc.text = publicacion.descripcion
+            itemBinding.txtAutor.text = "Jugador"
 
             if(publicacion.categoria=="Nintendo"){
                 itemBinding.imageButton2.setImageResource(R.drawable.ic_nintendo)

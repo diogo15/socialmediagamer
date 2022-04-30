@@ -80,6 +80,34 @@ class PublicacionesDAO {
         return listaPublicaciones
     }
 
+
+    fun getPublicacionesByCategory() : MutableLiveData<List<Publicacion>>{
+        val listaPublicaciones = MutableLiveData<List<Publicacion>>()
+
+        //llamar a google
+        firestore.collectionGroup(coleccion2).whereEqualTo("category", "ps4")
+            .addSnapshotListener { snapshot, ex ->
+                if (ex != null) {
+                    return@addSnapshotListener
+                }
+                if (snapshot != null){
+                    val lista = ArrayList<Publicacion>()
+                    val publicaciones = snapshot.documents
+                    publicaciones.forEach{
+
+                        val publicacion = it.toObject(Publicacion::class.java)
+                        if (publicacion != null){
+                            lista.add(publicacion)
+                        }
+
+                    }
+                    listaPublicaciones.value = lista
+                }
+            }
+
+        return listaPublicaciones
+    }
+
     suspend fun savePublicacion(publicacion: Publicacion){
         val document:DocumentReference
 
